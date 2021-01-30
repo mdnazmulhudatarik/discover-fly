@@ -56,8 +56,8 @@
 
                 <!-- Increase & Decrease Button -->
                 <div class="plus-minus-btn">
-                    <p> <span class="plus-minus-btn-span" id="fc-increase-btn">+</span> <span
-                            class="plus-minus-btn-span" id="fc-decrease-btn">-</span> </p>
+                    <p> <span class="plus-minus-btn-span"  onclick="inputController('fc', true);">+</span> 
+                        <span class="plus-minus-btn-span" onclick="inputController('fc', false);">-</span> </p>
                 </div>
             </div>
 
@@ -69,8 +69,8 @@
 
                 <!-- Increase & Decrease Button -->
                 <div class="plus-minus-btn">
-                    <p> <span class="plus-minus-btn-span" id="ec-increase-btn">+</span> <span
-                            class="plus-minus-btn-span" id="ec-decrease-btn">-</span> </p>
+                    <p> <span class="plus-minus-btn-span"  onclick="inputController('ec', true);">+</span> <span
+                            class="plus-minus-btn-span"  onclick="inputController('ec', false);">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -79,7 +79,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$ <span id="subtotalValue">00</span></p>
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$0</p>
                     </div>
                 </div>
                 <hr>
@@ -97,7 +97,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$00</p>
                     </div>
                 </div>
             </div>
@@ -117,74 +117,150 @@
 
         <!-- JS Files |JS scripts -->
         <script>
-            const increasebtnFc = document.getElementById('fc-increase-btn');
-            const inputFc = document.getElementById('fc-seat-input');
-            const decreasebtnFc = document.getElementById('fc-decrease-btn');
-
-            const increasebtnEc = document.getElementById('ec-increase-btn');
-            const inputEc = document.getElementById('ec-seat-input');
-            const decreasebtnEc = document.getElementById('ec-decrease-btn');
-
-            // Increase button JS
-            increasebtnFc.addEventListener('click', function () {
-
-                const inputParse = parseInt(inputFc.value);
-                const updateInputFc = inputParse + 1;
-
-                inputFc.value = updateInputFc;
 
 
-            })
 
-            // Decrease button JS
-            decreasebtnFc.addEventListener('click', function () {
-
-                const inputParse = parseInt(inputFc.value);
-                const updateInputFc = inputParse - 1;
-
-                inputFc.value = updateInputFc;
-
-                // IF Input Value Less Then '0'
-                if (updateInputFc < 0) {
-                    alert('Invalid input');
-                    inputFc.value = 0;
-                    const ifInputNeg = parseInt(inputFc.value);
+            // Increase / Decrease Function
+            function inputController(seatQuality,isIncrease) {
+                const inputSeat = document.getElementById(seatQuality + '-seat-input');
+                const inputSeatParse = parseInt(inputSeat.value);
+                let newInputSeatValue = inputSeatParse;
+                
+                if (isIncrease == true) {
+                    newInputSeatValue = inputSeatParse + 1;
+                }
+                if (isIncrease == false) {
+                    newInputSeatValue = inputSeatParse - 1;
                 }
 
+                inputSeat.value = newInputSeatValue;
 
-            })
-
-
-            // ECCCCCCC
-
-            // Increase button JS
-            increasebtnEc.addEventListener('click', function () {
-
-                const inputParse = parseInt(inputEc.value);
-                const updateInputEc = inputParse + 1;
-
-                inputEc.value = updateInputEc;
-
-
-            })
-
-            // Decrease button JS
-            decreasebtnEc.addEventListener('click', function () {
-
-                const inputParse = parseInt(inputEc.value);
-                const updateInputEc = inputParse - 1;
-
-                inputEc.value = updateInputEc;
-
-                // IF Input Value Less Then '0'
-                if (updateInputEc < 0) {
+                if (newInputSeatValue < 0) {
                     alert('Invalid input');
-                    inputEc.value = 0;
-                    const ifInputNeg = parseInt(inputEc.value);
+                    inputSeat.value = 0;
+                    const ifInputNeg = parseInt(inputSeat.value);
                 }
+            } // End Function
 
 
-            })
+            // // Increase / Decrease Function
+            // function inputControllerr(isIncrease) {
+            //     const inputSeat = document.getElementById('ec-seat-input');
+            //     const inputSeatParse = parseInt(inputSeat.value);
+            //     let newInputSeatValue = inputSeatParse;
+                
+            //     if (isIncrease == true) {
+            //         newInputSeatValue = inputSeatParse + 1;
+            //     }
+            //     if (isIncrease == false) {
+            //         newInputSeatValue = inputSeatParse - 1;
+            //     }
+
+            //     inputSeat.value = newInputSeatValue;
+
+            //     if (newInputSeatValue < 0) {
+            //         alert('Invalid input');
+            //         inputSeat.value = 0;
+            //         const ifInputNeg = parseInt(inputSeat.value);
+            //     }
+            // } // End Function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // // Decrease button JS
+            // document.getElementById('ec-decrease-btn').addEventListener('click', function () {
+
+            //     const inputSeat = document.getElementById('fc-seat-input');
+
+            //     console.log (inputSeat.value)
+
+
+
+
+
+
+            //     // console.log(inputSeat)
+            //     // const inputSeatParse = parseInt(inputSeat.value);
+            //     // const newInputSeatValue = inputSeatParse - 1;
+
+            //     // inputSeat.value = newInputSeatValue;
+
+            //     // // IF Input Value Less Then '0'
+            //     // if (newInputSeatValue < 0) {
+            //     //     alert('Invalid input');
+            //     //     inputSeat.value = 0;
+            //     //     const ifInputNeg = parseInt(inputSeat.value);
+            //     // }
+
+
+
+            // })
+
+
+            // // ECCCCCCC
+
+            // // Increase button JS
+            // increasebtnEc.addEventListener('click', function () {
+
+            //     const inputParse = parseInt(inputEc.value);
+            //     const updateInputEc = inputParse + 1;
+
+            //     inputEc.value = updateInputEc;
+
+            // })
+
+            // // Decrease button JS
+            // decreasebtnEc.addEventListener('click', function () {
+
+            //     const inputParse = parseInt(inputEc.value);
+            //     const updateInputEc = inputParse - 1;
+
+            //     inputEc.value = updateInputEc;
+
+            //     // IF Input Value Less Then '0'
+            //     if (updateInputEc < 0) {
+            //         alert('Invalid input');
+            //         inputEc.value = 0;
+            //         const ifInputNeg = parseInt(inputEc.value);
+            //     }
+
+            // })
+
+
 
 
 
