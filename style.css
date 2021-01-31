@@ -33,10 +33,12 @@ nav ul li a{
     color: #fff;
     padding: 10px;
     text-transform: uppercase;
+    text-decoration: none;
 }
 nav ul li a:hover, a.active{
     background-color: #3352F2;
     border-radius: 5px;
+    color: #fff;
 }
 .main-content{
     display: grid;
@@ -109,7 +111,6 @@ nav ul li a:hover, a.active{
     font-weight: 400;
     margin-bottom: 25px;
 }
-
 .btn-style{
     display: block;
     width: 100%;
@@ -124,4 +125,21 @@ nav ul li a:hover, a.active{
 .amount{
     display: flex;
     justify-content: space-between;
+}
+.booking {
+    position: absolute;
+    left: 50%;
+    top: calc(100% - 0%);
+    transform: translate(-50%, -50%);
+    width: 50%;
+    box-shadow: 5px 5px 10px #282b36;
+}
+.booking-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #45c224;
+    margin: 15px 0px 35px 0px;
+}
+.seat-item {
+    font-weight: 500;
 }
